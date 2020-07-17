@@ -20,7 +20,7 @@ set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
-
+set encoding=UTF-8
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -38,7 +38,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
-Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
@@ -50,9 +49,10 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
-Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
+
+
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
@@ -61,8 +61,12 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_invert_selection='0'
 
+"Python setup with nvim
+let g:python_host_prog = 'C:/Python27/python.exe'
+let g:python3_host_prog = 'C:/Users/ashwi/AppData/Local/Programs/Python/Python38-32/python.exe'
+
 " --- The Greatest plugin of all time.  I am not bias
-" let g:vim_be_good_floating = 0
+let g:vim_be_good_floating = 0
 
 " --- vim go (polyglot) settings.
 let g:go_highlight_build_constraints = 1
@@ -94,6 +98,7 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+"Remaps because I am crazy
 nnoremap <leader>prr :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
@@ -104,15 +109,16 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>ps :Rg<SPACE>
-nnoremap <C-p> :GFiles<CR>
-nnoremap <Leader>pf :Files<CR>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader><CR> :so ~\AppData\Local\nvim\init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" NERDTree Remap
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <F9> :NERDTreeToggle D:/github
 
 " vim TODO
 nmap <Leader>tu <Plug>BujoChecknormal
@@ -171,6 +177,3 @@ augroup END
 
 autocmd BufWritePre * :call TrimWhitespace()
 
-" NERDTree Remap
-map <C-n> :NERDTreeToggle<CR>
-nnoremap <F9> :NERDTreeToggle D:/github
