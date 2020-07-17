@@ -1,5 +1,5 @@
 <h1 align="center"> :clipboard: My Vim Config </h1>
-<hr>
+
 <p align="center">
 Feel free to use it ! Inspired from : @ThePrimeagen
 </p>
